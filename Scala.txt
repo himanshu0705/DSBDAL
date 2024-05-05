@@ -1,0 +1,89 @@
+#start
+su
+
+#change the directory to the folder where spark in installed
+cd Rohit_68
+
+#create the file 'wc_count.txt'
+nano wc_count.txt
+
+#start the spark shell
+spark-shell
+
+#load the input file
+val inputfile = sc.textFile("wc_count.txt")
+
+#logic for the word count
+val counts = inputfile.flatMap(line=>line.split(" ")).map(word=>(word,1)).reduceByKey(_+_);
+
+#debug the counts to string
+counts.toDebugString
+
+#cache the file
+counts.cache()
+
+#save the file in a folder
+counts.saveAsTextFile("output")
+
+
+
+
+
+#open another terminal and start it and change the directory
+#then change the directory to output folder
+cd output
+
+#list all the files in the folder
+ls
+
+#execute the files one by one
+cat Part-0000
+cat Part-0001
+
+
+
+
+
+# scala program for largest number
+object Laregst
+{
+	def main(args : Array[String])
+	{
+		var num1 = 10;
+		var num2 = 20;
+		if(num1 > num2)
+		{
+			println("largest Number is : " + num1);
+		}
+		else
+		{
+			println("largest Number is : " + num2);
+		}
+
+	}
+}
+
+
+
+
+
+#scala program for positive, negative or zero
+object Check
+{
+	def main(args : Array[String])
+	{
+		var num = -100;
+		if(num == 0)
+		{
+			println(num + " is zero");
+		}
+		else if(num > 0)
+		{
+			println(num + " is positive");
+		}
+		else
+		{
+			println(num + " is negative"1);
+		}
+	}
+}
